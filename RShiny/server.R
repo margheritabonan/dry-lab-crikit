@@ -2,6 +2,7 @@
 if (!require(shiny)) {
   install.packages("shiny", repos = "https://cloud.r-project.org")
 }
+#install.packages("shiny", repos = "https://cloud.r-project.org")
 library(shiny)
 
 # server logic for the app

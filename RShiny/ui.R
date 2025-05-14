@@ -1,7 +1,7 @@
 library(shiny)
 
 ui <- fluidPage(
-  titlePanel(" Shiny Data Analysis App"),
+  titlePanel(" CRIKIT Data Analysis App"),
   sidebarLayout(
     sidebarPanel(
       # upload input
