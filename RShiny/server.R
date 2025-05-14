@@ -3,7 +3,7 @@ if (!require(shiny)) {
   install.packages("shiny", repos = "https://cloud.r-project.org")
 }
 install.packages("shiny", repos = "https://cloud.r-project.org")
-install.packages("shinythemes")
+#install.packages("shinythemes") # makes the website gray for some reason (even if no theme is selected)
 library(shiny)
 #library(shinythemes)
 
