@@ -2,8 +2,10 @@
 if (!require(shiny)) {
   install.packages("shiny", repos = "https://cloud.r-project.org")
 }
-#install.packages("shiny", repos = "https://cloud.r-project.org")
+install.packages("shiny", repos = "https://cloud.r-project.org")
+install.packages("shinythemes")
 library(shiny)
+#library(shinythemes)
 
 # server logic for the app
 server <- function(input, output, session) {

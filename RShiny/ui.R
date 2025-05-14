@@ -1,6 +1,8 @@
 library(shiny)
+#library(shinythemes)
 
 ui <- fluidPage(
+  #theme = shinytheme("cosmo"),
   titlePanel(" CRIKIT Data Analysis App"),
   sidebarLayout(
     sidebarPanel(
