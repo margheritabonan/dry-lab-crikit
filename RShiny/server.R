@@ -49,18 +49,22 @@ server <- function(input, output, session) {
 
   # make a fluorescence analysis plot using QurvE
   output$plot2 <- renderPlot({
-    req(input$go)
-    df <- isolate(my_data())
-    num_cols <- sapply(df, is.numeric)
-    if (any(num_cols)) {
-      # Assuming the first numeric column is the one to analyze
-      fluorescence_data <- df[[ which(num_cols)[1] ]]
-      # Perform fluorescence analysis using QurvE
-      result <- QurvE::fluorescence_analysis(fluorescence_data)
-      plot(result)
-    } else {
-      plot.new()
-      text(0.5, 0.5, "No columns to plot")
-    }
-  })
+  req(input$go)
+  df <- isolate(my_data())
+  num_cols <- sapply(df, is.numeric)
+  if (any(num_cols)) {
+    # assuming the first numeric column is fluorescence data
+    fluorescence_data <- df[[ which(num_cols)[1] ]]
+    time_points <- seq_along(fluorescence_data) # replace with actual time points if available
+    
+    # perform fluorescence analysis using QurvE
+    result <- growth.gcFit(time = time_points, data = fluorescence_data)
+    
+    # plot the result
+    plot(result)
+  } else {
+    plot.new()
+    text(0.5, 0.5, "No columns to plot")
+  }
+})
 }
