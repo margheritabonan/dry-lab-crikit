@@ -14,8 +14,8 @@ ui <- fluidPage(
     ),
     mainPanel(
       # outputs: table and plot
-      tableOutput("datatable"),
-      plotOutput("plot1")
+      #tableOutput("datatable"),
+      plotOutput("plot2")
     )
   )
 )
