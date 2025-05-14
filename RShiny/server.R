@@ -57,8 +57,12 @@ server <- function(input, output, session) {
     fluorescence_data <- df[[ which(num_cols)[1] ]]
     time_points <- seq_along(fluorescence_data) # replace with actual time points if available
     
-    # perform fluorescence analysis using QurvE
-    result <- growth.gcFit(time = time_points, data = fluorescence_data)
+    # perform fluorescence analysis using QurvE # not sure if this is correct
+    result <- growth.gcFit(time = rnd.fluorescence_data$time,
+                      data = rnd.fluorescence_data$data,
+                      parallelize = FALSE,
+                      control = growth.control(suppress.messages = TRUE,
+                                               fit.opt = 's'))
     
     # plot the result
     plot(result)
