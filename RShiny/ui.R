@@ -3,7 +3,7 @@ library(shiny)
 
 ui <- fluidPage(
   #theme = shinytheme("cosmo"),
-  titlePanel(" CRIKIT Data Analysis App"),
+  titlePanel("Website CRIKIT Data Analysis App"),
   sidebarLayout(
     sidebarPanel(
       # upload input
