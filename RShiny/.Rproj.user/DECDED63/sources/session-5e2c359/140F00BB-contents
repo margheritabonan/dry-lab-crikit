@@ -1,0 +1,43 @@
+
+  #Server#------------------------------------------------------------
+
+library(shiny)
+library(ggplot2)
+
+server <- function(input, output, session){
+  
+  uploaded_data   <- reactive({req(input$datafile)
+    read.csv(input$datafile$datapath)})
+  
+  
+  output$lineplot <- renderPlot({req(input$plotButton)
+    df <- isolate(uploaded_data())
+    
+    ggplot(df, aes(x = X, y = Y)) +
+      geom_line(color = "purple", size = 1) +
+      theme_light() +
+      ggtitle("Fluorescence") +
+      xlab("Time") +
+      ylab("Intensity")
+  })
+  
+  
+}
+
+#Ui------------------------------------------------------------------------
+
+
+library(shiny)
+
+ui <- fluidPage(
+  
+  titlePanel("CRICKIT analyze"), 
+  sidebarLayout(
+    sidebarPanel(fileInput("datafile", "Upload CSV file", accept = ".csv"), 
+                 actionButton("plotButton", "Plot Data")),
+    
+    mainPanel(plotOutput("lineplot"))
+  )
+)
+
+shinyApp(ui = ui, server = server)
