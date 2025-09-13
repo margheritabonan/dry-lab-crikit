@@ -1,0 +1,56 @@
+# Time Analysis Module Server
+time_analysis_server <- function(id, datasets) {
+  moduleServer(id, function(input, output, session) {
+    
+    # Check if data is uploaded
+    output$dataUploaded <- reactive({
+      return(length(names(datasets)) > 0)
+    })
+    outputOptions(output, "dataUploaded", suspendWhenHidden = FALSE)
+    
+    # Update dataset choices when datasets change
+    observe({
+      choices <- names(datasets)
+      if (length(choices) > 0) {
+        updateSelectInput(session, "vizDataset", choices = choices, selected = choices[1])
+      }
+    })
+    
+    # Example plot using generated data
+    # We need to use input$vizDataset instead
+    # We only use it to name our dataset right now
+    # Instead we should create a plot similar to the one in the excel file
+    # x-axis: Time  y-axis: Well values
+
+    output$timePlot <- renderPlot({
+      req(input$vizDataset)
+      
+      # CHANGE THIS
+
+      # Generate example data
+      set.seed(42)
+      n_points <- 50
+      
+      # Create sample time-based data
+      time_points <- seq(1, n_points)
+      values <- cumsum(rnorm(n_points, 0, 1)) + time_points * 0.1
+      
+      # Create data frame
+      plot_data <- data.frame(
+        Time = time_points,
+        Value = values
+      )
+      
+      ggplot(plot_data, aes(x = Time, y = Value)) +
+        geom_line(color = "steelblue", size = 1) +
+        geom_point(color = "darkblue", size = 2) +
+        labs(
+          title = paste("Time Analysis for:", input$vizDataset),
+          x = "Time",
+          y = "Value"
+        ) +
+        theme_minimal()
+    })
+    
+  })
+}
