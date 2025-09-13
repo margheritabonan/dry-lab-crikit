@@ -29,8 +29,9 @@ Add your project description here. Explain what the diagnostic kit does, how it 
 
 Before you begin, ensure you have the following installed:
 
-- **R version** ? or higher
-- Add other dependencies here
+- **DT version** 0.33 or higher
+- **ggplot2 version** 3.5.1 or higher
+- **Shiny version** 1.10.0 or higher
 
 ### Installation
 
@@ -46,10 +47,6 @@ Before you begin, ensure you have the following installed:
 Add usage instructions here. Include examples and screenshots.
 
 ## Contact
-
-**Authors:** Daniël Kassab, Ema Jungová, Margherita Bonan, Yaprak Yigit
-
-**Connect with us:**  
 
 - [**Email**](mailto:igemteam@rug.nl)  
 - [**Team Wiki**](https://2025.igem.wiki/groningen/)  
