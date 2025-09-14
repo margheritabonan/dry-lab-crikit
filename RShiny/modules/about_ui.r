@@ -27,9 +27,9 @@ about_ui <- function(id) {
              p("We support raw datasets from Tecan SparkControl and delimited text files which must contain the following columns:"),
              p("(update this later)"),
              tags$ul(
-               tags$li(strong("Well:"), " Well position (e.g., A1, B2, etc.)"),
-               tags$li(strong("Value:"), " Measurement value"),
-               tags$li(strong("Time:"), " Time point (optional)")
+               tags$li(strong("Cycle Nr.:"), " The PCR cycle"),
+               tags$li(strong("Time:"), " Time point (optional)",
+               tags$li(strong("A1-H12:"), "The wells of a 96 well plate"))
              ),
              
              br(),

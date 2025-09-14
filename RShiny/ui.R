@@ -7,7 +7,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       # upload input
-      fileInput("datafile", "Upload CSV Data", accept = c(".csv")),
+      fileInput("datafile", "Upload CSV Data", accept = c(".*")),
       
       # more inputs here
       actionButton("go", "Run Analysis")

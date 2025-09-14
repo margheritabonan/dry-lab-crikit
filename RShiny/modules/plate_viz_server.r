@@ -1,4 +1,6 @@
 # Plate Visualization Module Server
+# The result looks weird, maybe because of mistakes made in the lab?
+# Also the column "Cycle Nr" is hardcoded
 plate_viz_server <- function(id, datasets) {
   moduleServer(id, function(input, output, session) {
     
@@ -20,9 +22,9 @@ plate_viz_server <- function(id, datasets) {
     observeEvent(input$vizDataset, {
       req(input$vizDataset)
       df <- datasets[[input$vizDataset]]
-      if ("Time" %in% names(df)) {
-        times <- sort(unique(df$Time))
-        updateSliderInput(session, "timepoint", min = min(times), max = max(times), value = min(times))
+      if ("Cycle Nr." %in% names(df)) {
+        cycles <- sort(unique(df$`Cycle Nr.`))
+        updateSliderInput(session, "timepoint", min = min(cycles), max = max(cycles), value = min(cycles))
       }
     })
     
@@ -31,21 +33,32 @@ plate_viz_server <- function(id, datasets) {
       req(input$vizDataset)
       df <- datasets[[input$vizDataset]]
       
-      if ("Time" %in% names(df) && !is.null(input$timepoint)) {
-        df <- df[df$Time == input$timepoint, ]
+      # Filter by cycle if available
+      if ("Cycle Nr." %in% names(df) && !is.null(input$timepoint)) {
+        df <- df[df$`Cycle Nr.` == input$timepoint, ]
       }
       
-      df$Row <- substr(df$Well, 1, 1)
-      df$Col <- as.numeric(sub("^[A-Z]", "", df$Well))
+      # Get well columns for a 96 well plate
+      well_cols <- names(df)[grepl("^[A-H][0-9]+$", names(df))]
       
-      ggplot(df, aes(x = Col, y = Row)) + 
+      # Reshape data to long format
+      df_long <- reshape2::melt(df, id.vars = setdiff(names(df), well_cols), 
+                                measure.vars = well_cols, 
+                                variable.name = "Well", 
+                                value.name = "Value")
+      
+      # Extract row and column from well names
+      df_long$Row <- substr(df_long$Well, 1, 1)
+      df_long$Col <- as.numeric(sub("^[A-Z]", "", df_long$Well))
+      
+      ggplot(df_long, aes(x = Col, y = Row)) + 
         geom_tile(aes(fill = Value > input$threshold), color = "#CB6CE6") + 
         scale_y_discrete(limits = rev(LETTERS[1:8])) + 
         scale_x_continuous(breaks = 1:12) + 
         scale_fill_manual(values = c("FALSE" = "white", "TRUE" = "#CB6CE6")) +
         theme_minimal(base_size = 14) + 
         labs(title = paste("Well Plate Readout", 
-                           if ("Time" %in% names(df)) paste("at time", input$timepoint) else ""), 
+                           if ("Cycle Nr." %in% names(df)) paste("at cycle", input$timepoint) else ""), 
              fill = "Above threshold") + 
         theme(
           panel.grid = element_blank(),
