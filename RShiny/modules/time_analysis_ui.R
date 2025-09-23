@@ -1,7 +1,11 @@
 # Time Analysis Module Server
 time_analysis_ui <- function(id) {
+  
+  
   ns <- NS(id)
-  tagList(
+ 
+  
+   tagList(
     h3("Time Series Analysis"),
     
     conditionalPanel(
@@ -14,9 +18,13 @@ time_analysis_ui <- function(id) {
         column(
           width = 6,
           selectInput(ns("vizWell"), "Select Well:", choices = NULL)
-        )
+        ),
       ),
-      br(),
+      
+    (div(sliderInput(ns("threshold"), "Select Threshold:", min = 0, max = 100, value = 50, step = 0.01))
+        ),
+    
+       br(),
       plotOutput(ns("timePlot"), height = "500px"),
       br(),
       downloadButton(ns("downloadTimePlot"), "Download Plot", class = "btn-secondary")
@@ -28,7 +36,9 @@ time_analysis_ui <- function(id) {
         class = "text-center",
         h4("No data available"),
         p("Upload data in the Datasets tab to view time series visualization.")
+        
       )
     )
   )
+   
 }

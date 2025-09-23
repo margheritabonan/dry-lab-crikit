@@ -72,7 +72,7 @@ time_analysis_server <- function(id, datasets) {
           title = paste("Time Analysis for:", input$vizDataset, "-", input$vizWell),
           x = "Time",
           y = "Fluorescence"
-        ) +
+        ) +  geom_hline(yintercept = input$threshold, linetype = "dotted", color = "#CB6CE6", size = 2) +
         theme_minimal()
      
     })
