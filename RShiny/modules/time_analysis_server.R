@@ -61,7 +61,7 @@ time_analysis_server <- function(id, datasets) {
          # y = "Value"
        # ) +
        #theme_minimal()
-
+     
       plot_data <- df[, c("Time", input$vizWell), drop = FALSE]
       names(plot_data) <- c("Time", "Value")
       
@@ -72,7 +72,7 @@ time_analysis_server <- function(id, datasets) {
           title = paste("Time Analysis for:", input$vizDataset, "-", input$vizWell),
           x = "Time",
           y = "Fluorescence"
-        ) +  geom_hline(yintercept = input$threshold, linetype = "dotted", color = "#CB6CE6", size = 2) +
+        ) +  geom_hline(yintercept = input$VizThreshold, linetype = "dotted", color = "#CB6CE6", size = 2) +
         theme_minimal()
      
     })

@@ -3,9 +3,9 @@ time_analysis_ui <- function(id) {
   
   
   ns <- NS(id)
- 
   
-   tagList(
+  
+  tagList(
     h3("Time Series Analysis"),
     
     conditionalPanel(
@@ -21,10 +21,10 @@ time_analysis_ui <- function(id) {
         ),
       ),
       
-    (div(sliderInput(ns("threshold"), "Select Threshold:", min = 0, max = 100, value = 50, step = 0.01))
-        ),
-    
-       br(),
+      (div(sliderInput(ns("VizThreshold"), "Select Threshold:", min = 0, max = 200, value = 100, step = 0.01))
+      ),
+      
+      br(),
       plotOutput(ns("timePlot"), height = "500px"),
       br(),
       downloadButton(ns("downloadTimePlot"), "Download Plot", class = "btn-secondary")
@@ -40,5 +40,5 @@ time_analysis_ui <- function(id) {
       )
     )
   )
-   
+  
 }

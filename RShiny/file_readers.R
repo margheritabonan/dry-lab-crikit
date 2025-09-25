@@ -98,8 +98,8 @@ read_sparkcontrol_file <- function(input_file, sheet = 1) {
   raw <- read_excel(input_file, sheet = sheet, col_names = FALSE)
   
   # Find the starting point of the data
-  start_row <- which(raw[[1]] == "Cycle Nr.")
-  if (length(start_row) == 0) stop("Could not find 'Cycle Nr.' in file.")
+  start_row <- which(raw[[1]] == "Time")
+  if (length(start_row) == 0) stop("Could not find 'Time' in file.")
   
   # Find where "End Time" appears
   end_row <- which(raw[[1]] == "End Time")

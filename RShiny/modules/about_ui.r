@@ -32,6 +32,12 @@ about_ui <- function(id) {
                tags$li(strong("A1-H12:"), "The wells of a 96 well plate"))
              ),
              
+             h3("Note"),
+             p("This webtool is not meant for decision taking for treatment, it only serves as additional support. "
+             
+             ),
+  
+             
              br(),
              div(class = "alert alert-info",
                  strong("Note:"), " Make sure your data follows the expected format for optimal results."
