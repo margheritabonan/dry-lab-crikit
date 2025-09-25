@@ -1,0 +1,42 @@
+# About Module UI
+about_ui <- function(id) {
+  ns <- NS(id)
+  
+  fluidRow(
+    column(12,
+           h2("Welcome to the CRIKIT data anaylsis software (We need to give it a name)"),
+           br(),
+           div(
+             h3("Overview"),
+             p(".... is a comprehensive tool for analyzing well plate data from fluorescence assays. 
+               This application provides multiple analysis modules to help you understand your experimental results."),
+             
+             h3("Features"),
+             tags$ul(
+               tags$li("Upload and manage multiple datasets"),
+               tags$li("Interactive well plate visualization")
+             ),
+             
+             h3("Getting Started"),
+             tags$ol(
+               tags$li("Navigate to the 'Datasets' tab to upload your fluorescence data"),
+               tags$li("Use the analysis tabs to explore your data"),
+             ),
+             
+             h3("Data Format"),
+             p("We support raw datasets from Tecan SparkControl and delimited text files which must contain the following columns:"),
+             p("(update this later)"),
+             tags$ul(
+               tags$li(strong("Cycle Nr.:"), " The PCR cycle"),
+               tags$li(strong("Time:"), " Time point (optional)",
+               tags$li(strong("A1-H12:"), "The wells of a 96 well plate"))
+             ),
+             
+             br(),
+             div(class = "alert alert-info",
+                 strong("Note:"), " Make sure your data follows the expected format for optimal results."
+             )
+           )
+    )
+  )
+}
