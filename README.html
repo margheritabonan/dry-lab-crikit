@@ -219,8 +219,9 @@ CRISPR-Cas13</h1>
 </div>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>Add your project description here. Explain what the diagnostic kit
-does, how it works, and its key benefits.</p>
+<p>
+The CRIKIT webtool  is a Shiny web application for the analysis and visualization of well plate fluorescence data, designed for CRISPR-Cas13-based antibiotic resistance detection. The app supports multiple data formats, interactive visualizations, and modular analysis workflows.
+</p>
 </div>
 <div id="getting-started" class="section level2">
 <h2>Getting Started</h2>
@@ -228,22 +229,53 @@ does, how it works, and its key benefits.</p>
 <h3>Prerequisites</h3>
 <p>Before you begin, ensure you have the following installed:</p>
 <ul>
-<li><strong>R version</strong> ? or higher</li>
-<li>Add other dependencies here</li>
+<li><strong>R version</strong> 4.0 or higher</li>
+<li>R packages: shiny, ggplot2, DT, bslib, tidyr, reshape2, readxl, readr, tools, stringr</li>
 </ul>
 </div>
 <div id="installation" class="section level3">
 <h3>Installation</h3>
 <ol style="list-style-type: decimal">
 <li><p><strong>Clone the repository</strong></p>
-<pre class="bash"><code>git clone https://gitlab.igem.org/2025/software-tools/groningen</code></pre></li>
-<li><p>…</p></li>
+<pre class="bash"><code>git clone https://gitlab.igem.org/2025/software-tools/groningen
+cd groningen/RShiny
+</code></pre></li>
+<li>
+<p><strong>Install R and required packages</strong></p>
+<pre class="r"><code>install.packages(c("shiny", "ggplot2", "DT", "bslib", "tidyr", "reshape2", "readxl", "readr", "tools", "stringr"))</code></pre>
+</li>
 </ol>
 </div>
 <div id="usage" class="section level3">
 <h3>Usage</h3>
-<p>Add usage instructions here. Include examples and screenshots.</p>
+<p>
+From the <code>RShiny</code> directory, launch the app with:
+</p>
+<pre class="bash"><code>Rscript app_runner.r</code></pre>
+<p>
+Or, in an R console:
+</p>
+<pre class="r"><code>setwd("path/to/RShiny")
+source("app_runner.r")
+</code></pre>
+<p>
+The app will open in your default web browser. If not, copy the URL from the terminal and open it manually.
+</p>
+<p>
+You can upload your datasets via the app interface. Supported formats: CSV, TSV, TXT, Excel (Tecan SparkControl).
+</p>
 </div>
+</div>
+<div id="data-format" class="section level2">
+<h2>Data Format</h2>
+<p>
+Delimited files (CSV, TSV, TXT) must contain columns:
+<ul>
+  <li><strong>Cycle Nr.</strong>: PCR cycle (required)</li>
+  <li><strong>Time</strong>: Time point (optional)</li>
+  <li><strong>A1-H12</strong>: Well values for a 96-well plate</li>
+</ul>
+</p>
 </div>
 <div id="contact" class="section level2">
 <h2>Contact</h2>
@@ -263,7 +295,7 @@ Wiki</strong></a><br />
 </div>
 <div id="license" class="section level2">
 <h2>License</h2>
-<p>This project is licensed under the [License Name] - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
 </div>
 </div>
 
