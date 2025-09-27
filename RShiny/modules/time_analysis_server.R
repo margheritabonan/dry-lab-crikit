@@ -28,23 +28,6 @@ time_analysis_server <- function(id, datasets) {
     
       # get dataset chosen by user
       df <- datasets[[input$vizDataset]]
-
-      
-      # Create data frame
-      #plot_data <- data.frame(
-       # Time = time_points,
-        #Value = values
-      #)
-      
-      #ggplot(plot_data, aes(x = Time, y = Value)) +
-       # geom_line(color = "steelblue", size = 1) +
-       # geom_point(color = "darkblue", size = 2) +
-       # labs(
-        # title = paste("Time Analysis for:", input$vizDataset),
-        #  x = "Time",
-         # y = "Value"
-       # ) +
-       #theme_minimal()
      
       plot_data <- df[, c("Time", input$vizWell), drop = FALSE]
       names(plot_data) <- c("Time", "Value")
