@@ -94,7 +94,7 @@ We welcome contributions! Please open an issue or submit a pull request. For maj
 Developed by Team Groningen 2025 for iGEM.
 
 **Authors:**  
-Yaprak Yigit, Margherita Bonan, Daniël Kassab, ...
+Yaprak Yigit, Margherita Bonan, Daniël Kassab.
 
 **Connect with us:**  
 - [Email](mailto:igemteam@rug.nl)
