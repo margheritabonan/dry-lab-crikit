@@ -32,8 +32,8 @@ For more information about our project, visit our [team wiki](https://2025.igem.
 
 1. **Clone the repository**
     ```sh
-    git clone https://gitlab.com/your-team/dry-lab-crikit.git
-    cd dry-lab-crikit/RShiny
+    git clone https://gitlab.igem.org/2025/software-tools/groningen.git
+    cd groningen/RShiny
     ```
 
 2. **Install required R packages**  
@@ -51,7 +51,7 @@ For more information about our project, visit our [team wiki](https://2025.igem.
       ```
     - Or, in an R console:
       ```r
-      setwd("path/to/RShiny")
+      setwd("path/to/groningen/RShiny")
       source("app_runner.r")
       ```
 
