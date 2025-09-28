@@ -91,7 +91,7 @@ We welcome contributions! Please open an issue or submit a pull request. For maj
 
 ## Authors and acknowledgment
 
-Developed by Team Groningen 2025 for iGEM.
+Developed by Team Groningen for the 2025 iGEM competition.
 
 **Authors:**  
 Yaprak Yigit, Margherita Bonan, Daniël Kassab.
