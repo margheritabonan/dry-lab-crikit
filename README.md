@@ -1,41 +1,113 @@
 # Team Groningen 2025 Software Tool
 
-If your team competes in the [**Software & AI** village](https://villages.igem.org) or wants to
-apply for the [**Best Software Tool** prize](https://competition.igem.org/judging/special-prizes), you **MUST** host all the
-source code of your team's software tool in this repository, `main` branch. By the **Wiki Freeze**, a
-[release](https://docs.gitlab.com/ee/user/project/releases/) will be automatically created as the judging artifact of
-this software tool. You will be able to keep working on your software after the Grand Jamboree.
+The CRIKIT web tool is an interactive Shiny web application for the analysis and visualization of well plate fluorescence data, specifically designed for CRISPR-Cas13-based antibiotic resistance detection assays. 
 
-> If your team does not have any software tool, you can totally ignore this repository. If left unchanged, this
-repository will be automatically deleted by the end of the season.
 
 ## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might
-be unfamiliar with (for example your team wiki). A list of Features or a Background subsection can also be added here.
-If there are alternatives to your project, this is a good place to list differentiating factors.
+CRIKIT is a modular, user-friendly RShiny application developed by Team Groningen 2025 for iGEM. It enables rapid, reproducible analysis of fluorescence data from 96-well plate assays, with a focus on CRISPR-Cas13-based diagnostics. The app supports multiple data formats, interactive visualizations, and a streamlined workflow from data upload to result interpretation.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew.
-However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing
-specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a
-specific context like a particular programming language version or operating system or has dependencies that have to be
-installed manually, also add a Requirements subsection.
+For more information about our project, visit our [team wiki](https://2025.igem.wiki/groningen/).
+
+## Features
+
+- **Upload and manage multiple datasets** (CSV, TSV, TXT, or Tecan SparkControl Excel files)
+- **Interactive well plate visualization** with thresholding and timepoint selection
+- **Time series analysis** for individual wells with customizable threshold lines
+- **Downloadable plots** for publication or further analysis
+- **User-friendly interface** with modular design
+- **Support for raw Tecan SparkControl data** (Excel export)
+- **Customizable thresholds and visualization parameters**
+
+
+
+## Getting Started
+
+### Requirements
+
+- **R** version 4.0 or higher
+- R packages: `shiny`, `ggplot2`, `DT`, `bslib`, `tidyr`, `reshape2`, `readxl`, `readr`, `tools`, `stringr`
+- (Optional, for advanced analysis) `QurvE`
+
+### Installation
+
+1. **Clone the repository**
+    ```sh
+    git clone https://gitlab.com/your-team/dry-lab-crikit.git
+    cd dry-lab-crikit/RShiny
+    ```
+
+2. **Install required R packages**  
+   In your R console:
+    ```r
+    install.packages(c("shiny", "ggplot2", "DT", "bslib", "tidyr", "reshape2", "readxl", "readr", "tools", "stringr"))
+    # Optional for advanced analysis:
+    install.packages("QurvE")
+    ```
+
+3. **Run the application**
+    - From the `RShiny` directory:
+      ```sh
+      Rscript app_runner.r
+      ```
+    - Or, in an R console:
+      ```r
+      setwd("path/to/RShiny")
+      source("app_runner.r")
+      ```
+
+The app will open in your default web browser. If not, copy the URL from the terminal and open it manually.
+
+---
+
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of
-usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably
-include in the README.
+
+1. **Upload Data:** Go to the "Datasets" tab and upload your fluorescence data (CSV, TSV, TXT, or Tecan SparkControl Excel).
+2. **Preview Data:** View a summary and preview of your uploaded datasets.
+3. **Plate Visualization:** Use the "Plate Visualization" tab to explore well plate data interactively, set thresholds, and select timepoints.
+4. **Time Analysis:** In the "Time analysis" tab, select a well to view its fluorescence over time and set a threshold for visualization.
+5. **Download Plots:** Download any visualization for your records or publications.
+
+---
+
+### Data Format
+
+- **Delimited files:** Should contain columns for `Cycle Nr.` (required), `Time` (optional), and wells named `A1` to `H12` (for 96-well plates).
+- **Tecan SparkControl files:** Upload the raw Excel export; the app will parse the relevant data.
+- **Auto-detection:** The app will attempt to detect delimiters and decimal formats automatically.
+
+---
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+We welcome contributions! Please open an issue or submit a pull request. For major changes, please discuss them first via an issue.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started.
-Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps
-explicit. These instructions could also be useful to your future self.
+**To get started:**
+- Fork the repository
+- Create a new branch (`git checkout -b feature/your-feature`)
+- Commit your changes
+- Push to your branch and open a pull request
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce
-the likelihood that the changes inadvertently break something. Having instructions for running tests is especially
-helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+---
 
 ## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+
+Developed by Team Groningen 2025 for iGEM.
+
+**Authors:**  
+Yaprak Yigit, Margherita Bonan, Daniël Kassab, ...
+
+**Connect with us:**  
+- [Email](mailto:igemteam@rug.nl)
+- [Team Wiki](https://2025.igem.wiki/groningen/)
+- [LinkedIn](https://www.linkedin.com/in/igem-groningen/)
+- [Instagram](https://www.instagram.com/igem_groningen/)
+
+Special thanks to all contributors and advisors.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
