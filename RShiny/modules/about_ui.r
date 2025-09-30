@@ -8,13 +8,13 @@ about_ui <- function(id) {
   fluidRow(
     column(12,
            # App welcome header
-           h2("Welcome to the CRIKIT data anaylsis software (We need to give it a name)"),
+           h2("Welcome to the CRIKIT data anaylsis software"),
            br(),
            div(
              # Overview section
              h3("Overview"),
-             p(".... is a comprehensive tool for analyzing well plate data from fluorescence assays. 
-               This application provides multiple analysis modules to help you understand your experimental results."),
+             p("This is a comprehensive tool for analyzing well plate data from fluorescence assays. 
+               The application provides multiple analysis modules to help you understand your experimental results."),
              
              # Features list
              h3("Features"),
@@ -33,7 +33,6 @@ about_ui <- function(id) {
              # Data format requirements
              h3("Data Format"),
              p("We support raw datasets from Tecan SparkControl and delimited text files which must contain the following columns:"),
-             p("(update this later)"),
              tags$ul(
                tags$li(strong("Cycle Nr.:"), " The PCR cycle"),
                tags$li(strong("Time:"), " Time point (optional)"),
