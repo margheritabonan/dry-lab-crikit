@@ -8,12 +8,13 @@ about_ui <- function(id) {
   fluidRow(
     column(12,
            # App welcome header
-           h2("Welcome to the CRIKIT webtool!"),
+           h2("Welcome to the CRIKIT data anaylsis software"),
            br(),
            div(
              # Overview section
              h3("Overview"),
-             p("The CRIKIT webtool is an interactive Shiny web application for the analysis and visualization of well plate fluorescence data, specifically designed for CRISPR-Cas13-based antibiotic resistance detection assays. The tool streamlines the workflow from raw data import to customizable visualizations and statistical summaries, enabling researchers to efficiently interpret high-throughput screening results and accelerate the development of CRISPR-based diagnostics."),
+             p("This is a comprehensive tool for analyzing well plate data from fluorescence assays. 
+               The application provides multiple analysis modules to help you understand your experimental results."),
              
              # Features list
              h3("Features"),
@@ -39,7 +40,7 @@ about_ui <- function(id) {
              
              # Data format requirements
              h3("Data Format"),
-             p("CRIKIT supports the following data formats:"),
+             p("We support raw datasets from Tecan SparkControl and delimited text files which must contain the following columns:"),
              tags$ul(
                tags$li(strong("Delimited files (CSV, TSV, TXT):"), " Should contain columns for 'Cycle Nr.' (required), 'Time' (optional), and wells named 'A1' to 'H12' (for 96-well plates)."),
                tags$li(strong("Tecan SparkControl files:"), " Upload the raw Excel export; the app will parse the relevant data automatically."),
