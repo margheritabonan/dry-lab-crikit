@@ -10,7 +10,7 @@ For more information about our project, visit our [team wiki](https://2025.igem.
 
 ## Features
 
-- **Upload and manage multiple datasets** (CSV, TSV, TXT, or Tecan SparkControl Excel files)
+- **Upload and manage multiple datasets** (in CSV format)
 - **Interactive well plate visualization** with thresholding and timepoint selection
 - **Time series analysis** for individual wells with customizable threshold lines
 - **Downloadable plots** for publication or further analysis
@@ -62,7 +62,7 @@ The app will open in your default web browser. If not, copy the URL from the ter
 
 ## Usage
 
-1. **Upload Data:** Go to the "Datasets" tab and upload your fluorescence data (CSV, TSV, TXT, or Tecan SparkControl Excel).
+1. **Upload Data:** Go to the "Datasets" tab and upload your fluorescence data (CSV, separated with ;).
 2. **Preview Data:** View a summary and preview of your uploaded datasets.
 3. **Plate Visualization:** Use the "Plate Visualization" tab to explore well plate data interactively, set thresholds, and select timepoints.
 4. **Time Analysis:** In the "Time analysis" tab, select a well to view its fluorescence over time and set a threshold for visualization.
