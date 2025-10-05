@@ -1,12 +1,13 @@
 # Source module UI files
-source("modules/about_ui.R")
-source("modules/datasets_ui.R")
-source("modules/plate_viz_ui.R")
+source("modules/about_ui.r")
+source("modules/datasets_ui.r")
+source("modules/plate_viz_ui.r")
 source("modules/time_analysis_ui.R")
 
 # Main UI
 ui <- navbarPage(
-  title = tags$img(src = "Images/CRIKIT_logo_transparant.png", height = "40px", alt = "crikit Logo"),
+  #title = tags$img(src = "Images/logo.png", height = "40px", alt = "crikit Logo"),
+  title = "CRIKIT",
   theme = bslib::bs_theme(version = 4),
 
   # Add custom CSS
