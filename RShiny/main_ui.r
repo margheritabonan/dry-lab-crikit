@@ -6,8 +6,7 @@ source("modules/time_analysis_ui.R")
 
 # Main UI
 ui <- navbarPage(
-  #title = tags$img(src = "Images/logo.png", height = "40px", alt = "crikit Logo"),
-  title = "CRIKIT",
+  title = tags$img(src = "Images/logo.png", height = "40px", alt = "crikit Logo"),
   theme = bslib::bs_theme(version = 4),
 
   # Add custom CSS
