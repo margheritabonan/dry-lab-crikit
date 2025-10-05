@@ -22,8 +22,8 @@ plate_viz_server <- function(id, datasets) {
     observeEvent(input$vizDataset, {
       req(input$vizDataset)
       df <- datasets[[input$vizDataset]]
-      if ("Time" %in% names(df)) {
-        cycles <- sort(unique(df$`Time`))
+      if ("Cycle Nr" %in% names(df)) {
+        cycles <- sort(unique(df$`Cycle Nr`))
         updateSliderInput(session, "timepoint", min = min(cycles), max = max(cycles), value = min(cycles))
       }
     })
@@ -31,11 +31,12 @@ plate_viz_server <- function(id, datasets) {
     # Create plate plot
     create_plot <- function() {
       req(input$vizDataset)
-      df <- datasets[[input$vizDataset]]
+      df <- datasets[[input$vizDataset]] 
+      
       
       # Filter by cycle if available
-      if ("Time" %in% names(df) && !is.null(input$timepoint)) {
-        df <- df[df$`Time` == input$timepoint, ]
+      if ("Cycle Nr." %in% names(df) && !is.null(input$timepoint)) {
+        df <- df[df$`Cycle Nr.` == input$timepoint, ]
       }
       
       # Get well columns for a 96 well plate
@@ -53,15 +54,15 @@ plate_viz_server <- function(id, datasets) {
       
      
       
-      ggplot(df_long, aes(x = Col, y = Row)) + 
+      ggplot(df_long %>% filter(!is.na(Value)), aes(x = Col, y = Row)) + 
         geom_tile(aes(fill = (Value > input$threshold)), color = "white", size = 1) + 
         scale_y_discrete(limits = rev(LETTERS[1:8])) + 
         scale_x_continuous(breaks = 1:12) + 
-        scale_fill_manual(values = c("FALSE" = "white", "TRUE" = "#CB6CE6")) +
+        scale_fill_manual(values= c("FALSE" = "#e9cced", "TRUE" = "#CB6CE6")) +
         theme_linedraw(base_size = 18) + 
         labs(title = paste("Well Plate Readout", 
-                           if ("Time" %in% names(df)) paste("at cycle", input$timepoint) else ""), 
-             fill = "Above threshold") + 
+                           if ("Cycle Nr" %in% names(df)) paste("at cycle", input$timepoint) else ""), 
+             fill = "At or above threshold") + 
         theme(
           panel.grid = element_blank(),
           axis.title = element_blank()

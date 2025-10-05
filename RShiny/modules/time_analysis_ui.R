@@ -22,7 +22,7 @@ time_analysis_ui <- function(id) {
         ),
       ),
       # Slider to set threshold for visualization
-      (div(sliderInput(ns("VizThreshold"), "Select Threshold:", min = 0, max = 200, value = 100, step = 0.01))
+      (div(sliderInput(ns("VizThreshold"), "Select Threshold:", min = 0, max = 100000, value = 50000, step = 0.01))
       ),
       
       br(),

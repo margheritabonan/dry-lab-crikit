@@ -14,10 +14,10 @@ plate_viz_ui <- function(id) {
         selectInput(ns("vizDataset"), "Select Dataset:", choices = NULL),
         # Slider to set value threshold
         sliderInput(ns("threshold"), "Value Threshold:", 
-                    min = 0, max = 200, value = 100, step = 0.01),
+                    min = 0, max = 100000, value = 50000, step = 0.01),
         # Slider to select timepoint
         sliderInput(ns("timepoint"), "Select Timepoint:", 
-                    min = 0, max = 10, value = 5, step = 1),
+                    min = 0, max = 100, value = 50, step = 1),
         br(), br(),
         # Button to download the plot
         downloadButton(ns("downloadPlot"), "Download Plot", class = "btn-secondary")

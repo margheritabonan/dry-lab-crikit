@@ -1,6 +1,13 @@
 # Datasets Module Server
 # To do: - Add Spark Control data reader
 #        - Automatically detect the delimiter
+library(readr)
+library(shiny)
+library(ggplot2)
+library(DT)
+library(tidyr)
+library(reshape2)
+library(tidyverse)
 
 datasets_server <- function(id, datasets) {
   moduleServer(id, function(input, output, session) {
@@ -34,8 +41,8 @@ datasets_server <- function(id, datasets) {
       # Use appropriate read function based on delimiter
       if (delimiter == "\t") {
         read.delim(file_path, stringsAsFactors = FALSE)
-      } else {
-        read.csv(file_path, sep = delimiter, stringsAsFactors = FALSE)
+      } else  {
+        read_delim(file_path, delim = ";", skip = 48, locale = locale(encoding = "latin1", decimal_mark = ".", grouping_mark = ""), trim_ws = TRUE)  
       }
     }
     
@@ -68,8 +75,10 @@ datasets_server <- function(id, datasets) {
                                sheet = sheet,
                                skip = start_row - 1,
                                n_max = nrows)
+      
       # Delete empty columns
       df <- df[, colSums(df != "" & !is.na(df)) > 0]
+      
       return(df)
     }
     
@@ -131,4 +140,5 @@ datasets_server <- function(id, datasets) {
       fileType = reactive(input$fileType)
     ))
   })
+  
 }
